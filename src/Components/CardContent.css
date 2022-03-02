@@ -2,3 +2,21 @@
     color: white;
     text-decoration: none;
 }
+img {width: 15%;}
+
+
+#content {
+    background-color: aliceblue;
+    min-height: 1000px;
+    text-align: center;
+}
+
+#p {
+    text-align: justify;
+    margin: 20px 38% 7px 38%;
+    border-style: groove;
+}
+
+#rate {
+    margin-top: 15px;
+}

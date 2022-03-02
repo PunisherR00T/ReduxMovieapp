@@ -2,14 +2,17 @@ import  {Modal,Form,Button} from 'react-bootstrap'
 import './Filmadd.css'
 import { useState } from 'react';
 import { Rating } from '@mui/material';
+import { useDispatch} from 'react-redux';
+import { handleadd } from '../Redux/Actions';
 
-const FilmAdd = ({handleadd}) => {
+const FilmAdd = () => {
     const [show, setShow] = useState(false);
     const [title,setTitle] = useState('')
     const [imageurl,setImageurl] = useState('')
     const [Description,setDescription] = useState('')
     const [ratingstars,setRatingstars] = useState(0)
     const handleclose = () => setShow(false)
+    const dispatch = useDispatch()
 
     return (
         <div>
@@ -51,7 +54,7 @@ const FilmAdd = ({handleadd}) => {
                     
         </Modal.Body>
         <Modal.Footer>
-                <Button  variant="primary" onClick={()=>{handleadd({titre:title,image:imageurl,description:Description,rating:ratingstars,id:Math.random()});handleclose()}} >
+                <Button  variant="primary" onClick={()=>{dispatch(handleadd(title,imageurl,Description,ratingstars));handleclose();}}>
                     Confirmer
                 </Button>
                 </Modal.Footer>

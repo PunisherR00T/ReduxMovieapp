@@ -1,13 +1,21 @@
+import { Rating } from "@mui/material";
+import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom"
 import './CardContent.css'
 
-const CardContent = ({films}) => {
-    const {id} = useParams()
-    const selectedFilm = films.find(film => film.id === id)
+const CardContent = () => {
+    const films = useSelector((state) => state.films);
+    const {content} = useParams()
+    const selectedFilm = films.find(film => film.titre === content)
   
     return (
-        <div>
+        <div id="content">
             <h1>{selectedFilm.titre}</h1>
+            <img src={selectedFilm.image} alt="Verify Source"/>
+            <br/>
+            <Rating id="rate" defaultValue={selectedFilm.rating} readOnly />
+            <p id="p">{selectedFilm.description}</p>
+            <br/>
             <Link to='/Films' className='link'>Films</Link>
         </div>
     )

@@ -1,8 +1,11 @@
+import { useSelector } from 'react-redux';
 import './AllFilms.css'
 import FilmCard from './FilmCard'
 
-const AllFilms = ({films,inpt,rate}) => {
-    
+const AllFilms = () => {
+    const films = useSelector((state) => state.films);
+    const rate = useSelector((state) => state.rate);
+    const inpt = useSelector((state) => state.inpt);
     const x = films.filter(film => film.titre.toUpperCase().includes(inpt.toUpperCase()) && film.rating >= rate).map(film => <FilmCard key={film.id} film={film}/> )
     return(
         
